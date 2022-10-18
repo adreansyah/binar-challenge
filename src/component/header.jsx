@@ -5,6 +5,9 @@ import car from 'assets/images/img_car.png';
 
 export const Header = ({ name }) => {
     const navigate = useNavigate()
+    const clickHandler = (e) => {
+        navigate('/start-rent-car')
+    }
     return (
         <div className="header">
             <nav className="navbar-binar">
@@ -39,7 +42,7 @@ export const Header = ({ name }) => {
                     <p className="title-hero">Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)</p>
                     <p className="title-desc">Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik
                         dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</p>
-                    <button onClick={() => navigate('/start-rent-car')}>Mulai Sewa Mobil</button>
+                    <button type='button' onClick={clickHandler}>Mulai Sewa Mobil</button>
                 </div>
                 <div className="hero-car">
                     <img src={car} alt="Mobil" />

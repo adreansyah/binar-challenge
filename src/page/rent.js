@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import { TOKEN, url } from 'config/authoritize';
+import React, { useEffect, useState } from 'react';
 
 const AboutUs = (props) => {
     const [state, setState] = useState({
-        nama: "",
-        kategori: "",
-        harga: "",
-        status: false
+        name: "",
+        category: "",
+        price: "",
+        isRented: false
     })
+
+    const fetcApi = (params) => {
+        return axios.get(url + 'admin/v2/car', {
+            params: {
+                ...params,
+            },
+            headers: {
+                access_token: `${TOKEN}`,
+                "content-type": "application/json"
+            }
+        })
+    }
+
     const changeHandler = (event) => {
         const { name, value } = event.target
         setState(prev => {
@@ -17,8 +32,12 @@ const AboutUs = (props) => {
         })
     }
     const clickHandler = () => {
-        console.log("MULAI MENCARI : ", state)
+        props.closeHandler("success")
     }
+
+    useEffect(() => {
+        fetcApi(state).then(r => console.log(r));
+    }, [state])
     return (
         <div className='block-box-search'>
             <div className='box-card-search'>

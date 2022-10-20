@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from 'assets/images/logo-binar.svg'
 import car from 'assets/images/img_car.png';
 
-export const Header = ({ name }) => {
+export const Header = ({ name, history, statusPencarian }) => {
     const navigate = useNavigate()
     const clickHandler = (e) => {
         navigate('/start-rent-car')
     }
+    // console.log(statusPencarian)
     return (
         <div className="header">
             <nav className="navbar-binar">
@@ -37,16 +38,16 @@ export const Header = ({ name }) => {
                     </div>
                 </div>
             </nav>
-            <div className="hero-section">
-                <div className="hero-section-left">
+            <div className="hero-section" style={{ height: statusPencarian === "success" ? 200 : "auto" }}>
+                {statusPencarian !== "success" && <div className="hero-section-left">
                     <p className="title-hero">Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)</p>
                     <p className="title-desc">Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik
                         dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</p>
-                    <button type='button' onClick={clickHandler}>Mulai Sewa Mobil</button>
-                </div>
-                <div className="hero-car">
+                    {history.location.pathname !== "/start-rent-car" && <button type='button' onClick={clickHandler}>Mulai Sewa Mobil</button>}
+                </div>}
+                {statusPencarian !== "success" && <div className="hero-car">
                     <img src={car} alt="Mobil" />
-                </div>
+                </div>}
             </div>
         </div>
     )

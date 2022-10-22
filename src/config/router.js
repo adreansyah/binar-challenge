@@ -1,6 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 import Home from 'page/home';
-import RentCar from 'page/rent';
+import RentCar from 'page/rent-resources/rent';
 
 
 const routerSource = (props) => ([

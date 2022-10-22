@@ -3,9 +3,10 @@ import { fetcApi } from 'config/fethApi';
 import { Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { category, price, status } from './option-data';
+import Card from 'component/card';
 
 const AboutUs = (props) => {
-
+    const [data, setdata] = useState([])
     const [state, setState] = useState({
         name: "",
         category: "",
@@ -31,22 +32,11 @@ const AboutUs = (props) => {
         fetcApi(state).then(({ data }) => console.log(data.cars))
     }
 
-    // useEffect(() => {
-    //     console.log(focus);
-    //     if (!focus) {
-    //         document.addEventListener("click", () => {
-    //             console.log(focus);
-    //             setfocus(false)
-    //             // focus && setfocus(false)
-    //         })
-    //     }
-    // },[])
-
     useEffect(() => {
-        isLoading === "isLoad" && fetcApi(state).then(r => console.log(r));
+        isLoading === "isLoad" && fetcApi(state).then(({ data }) => setdata(data.cars));
         setLoading("break")
     }, [state, isLoading])
-
+    
     return (
         <>
             {focus && <div className='opacity'></div>}
@@ -102,6 +92,9 @@ const AboutUs = (props) => {
                         </div>
                     </form>
                 </div>
+            </div>
+            <div className='block-box-search'>
+                <Card data={data} />
             </div>
         </>
     )

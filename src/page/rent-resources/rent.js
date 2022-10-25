@@ -36,7 +36,6 @@ const AboutUs = (props) => {
         isLoading === "isLoad" && fetcApi(state).then(({ data }) => setdata(data.cars));
         setLoading("break")
     }, [state, isLoading])
-    
     return (
         <>
             {focus && <div className='opacity'></div>}

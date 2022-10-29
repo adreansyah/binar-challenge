@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { fetcApi } from 'config/fethApi';
 import { Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,19 +29,35 @@ const AboutUs = (props) => {
     const clickHandler = () => {
         props.closeHandler("success")
         setfocus(false)
-        fetcApi(state).then(({ data }) => console.log(data.cars))
+        fetcApi(state).then(({ data }) => setdata(data.cars))
     }
 
     useEffect(() => {
         isLoading === "isLoad" && fetcApi(state).then(({ data }) => setdata(data.cars));
         setLoading("break")
     }, [state, isLoading])
+
+    const wrapperRef = useRef(null);
+
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutside, false);
+        return () => {
+            document.removeEventListener("click", handleClickOutside, false);
+        };
+    }, []);
+
+    const handleClickOutside = event => {
+        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+            setfocus(false);
+        }
+    };
+    console.log(data);
     return (
         <>
             {focus && <div className='opacity'></div>}
             <div className='block-box-search'>
                 <div className='box-card-search'>
-                    <form onFocus={() => setfocus(true)}>
+                    <form ref={wrapperRef} onFocus={() => setfocus(true)}>
                         <div className='container-box-search'>
                             <div>
                                 <span>Nama Mobil</span>
@@ -93,7 +109,7 @@ const AboutUs = (props) => {
                 </div>
             </div>
             <div className='block-box-search'>
-                <Card data={data} />
+                {data.length === 0 ? <div style={{position:"relative",top:"2rem"}}>Data Not found</div> : <Card data={data} />}
             </div>
         </>
     )

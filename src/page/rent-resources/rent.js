@@ -4,18 +4,19 @@ import { Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { category, price, status } from './option-data';
 import Card from 'component/card';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestData } from 'ex-redux/actions/action-data';
 
 const AboutUs = (props) => {
-    const [data, setdata] = useState([])
     const [state, setState] = useState({
         name: "",
         category: "",
         price: "",
         isRented: false
     })
-    const [isLoading, setLoading] = useState('isLoad')
     const [focus, setfocus] = useState(false)
-
+    const { data } = useSelector(state => state.userData)
+    const dispatch = useDispatch()
     const changeHandler = (event) => {
         const { name, value } = event.target
         setState(prev => {
@@ -29,13 +30,8 @@ const AboutUs = (props) => {
     const clickHandler = () => {
         props.closeHandler("success")
         setfocus(false)
-        fetcApi(state).then(({ data }) => setdata(data.cars))
+        dispatch(requestData())
     }
-
-    useEffect(() => {
-        isLoading === "isLoad" && fetcApi(state).then(({ data }) => setdata(data.cars));
-        setLoading("break")
-    }, [state, isLoading])
 
     const wrapperRef = useRef(null);
 
@@ -51,7 +47,6 @@ const AboutUs = (props) => {
             setfocus(false);
         }
     };
-    console.log(data);
     return (
         <>
             {focus && <div className='opacity'></div>}
@@ -109,7 +104,7 @@ const AboutUs = (props) => {
                 </div>
             </div>
             <div className='block-box-search'>
-                {data.length === 0 ? <div style={{position:"relative",top:"2rem"}}>Data Not found</div> : <Card data={data} />}
+                {data.length === 0 ? <div style={{ position: "relative", top: "2rem" }}>Data Not found</div> : <Card data={data} />}
             </div>
         </>
     )

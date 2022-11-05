@@ -7,13 +7,18 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { createBrowserHistory } from 'history';
 
-const history = createBrowserHistory()
+import { Provider } from 'react-redux';
 
+import store from 'ex-redux';
+
+const history = createBrowserHistory()
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router basename="/" history={history}>
-    <App history={history} />
-  </Router>
+  <Provider store={store}>
+    <Router basename="/" history={history}>
+      <App history={history} />
+    </Router>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

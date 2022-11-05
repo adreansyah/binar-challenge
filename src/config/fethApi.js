@@ -12,3 +12,27 @@ export const fetcApi = (params) => {
         }
     })
 }
+
+export const fetchApi = ((endpoint, params) => {
+    return axios.get(url + endpoint, {
+        params: {
+            ...params,
+        },
+        headers: {
+            access_token: `${TOKEN}`,
+            "content-type": "application/json"
+        }
+    })
+})
+
+export const postApi = ((endpoint, params) => {
+    console.log(params);
+    return axios.post(url + endpoint, {
+        ...params
+    }, {
+        headers: {
+            access_token: `${TOKEN}`,
+            "content-type": "application/json"
+        }
+    })
+})

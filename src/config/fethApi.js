@@ -32,7 +32,7 @@ export const postApi = ((endpoint, params) => {
     }, {
         headers: {
             access_token: `${TOKEN}`,
-            "content-type": "application/json"
+            "Content-Type": "multipart/form-data" 
         }
     })
 })

@@ -26,3 +26,16 @@ export const requestListCar = () => async (dispatch) => {
         console.log(error.message);
     }
 }
+
+export const requestListCarById = ({ id = null }) => async (dispatch) => {
+    try {
+        const { data } = await fetchApi(`admin/car/${id}`)
+        dispatch({
+            type: "LIST_DATA_API_BY_ID",
+            payload: data
+        })
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+

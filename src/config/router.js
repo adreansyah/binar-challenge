@@ -8,6 +8,7 @@ const routerSource = (props) => ([
     { index: true, path: '/', element: <Home  {...props} title="Home" /> },
     { index: true, path: '/start-rent-car', element: <RentCar  {...props} title="Rent Car" /> },
     { index: true, path: '/create-form', element: <Forms  {...props} title="Create Car" /> },
+    { index: true, path: '/create-form/:id', element: <Forms  {...props} title="Create Car" /> },
     { index: true, path: '/*', element: <>ERROR</> }
 ])
 

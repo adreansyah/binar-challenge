@@ -104,7 +104,7 @@ const AboutUs = (props) => {
                 </div>
             </div>
             <div className='block-box-search'>
-                {data.length === 0 ? <div style={{ position: "relative", top: "2rem" }}>Data Not found</div> : <Card data={data} />}
+                {data.length === 0 ? <div style={{ position: "relative", top: "2rem" }}>Data Not found</div> : <Card data={data} {...props} />}
             </div>
         </>
     )

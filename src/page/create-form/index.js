@@ -6,7 +6,7 @@ import { Button, FormGroup, Input, Label } from 'reactstrap';
 
 const Forms = () => {
     const dispatch = useDispatch()
-    const { data, detail, formState } = useSelector(state => state.userData)
+    const { formState } = useSelector(state => state.userData)
     const [forms, setforms] = useState(formState)
     const { id } = useParams()
     const [image, setImage] = useState(null)
@@ -20,6 +20,7 @@ const Forms = () => {
 
     const handleSubmit = (_) => {
         _.preventDefault()
+        // console.log("object");
         dispatch(requestCreateCar({ value: forms }))
     }
 
@@ -37,18 +38,18 @@ const Forms = () => {
             setforms(formState)
         }, 1000)
     }, [formState])
+
     const fileUpload = (_) => {
         var file = _.target.files[0];
         var reader = new FileReader();
         reader.onloadend = function () {
             setImage(reader.result)
-            // var data = (reader.result).split(',')[1];
             setforms(prev => ({
                 ...prev,
                 image: file
             }))
         }
-        reader.readAsDataURL(formState);
+        reader.readAsDataURL(file);
     }
     return (
         <div style={{ width: "50%", padding: 20 }}>
@@ -114,3 +115,4 @@ const Forms = () => {
 }
 
 export default Forms
+

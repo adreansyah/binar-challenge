@@ -1,7 +1,7 @@
-import { fetchApi, postApi } from "config/fethApi";
+import { deleteApi, fetchApi, postApi } from "config/fethApi";
 
 export const requestCreateCar = ({ value }) => async (dispatch) => {
-    console.log(value);
+    console.log("IN ACTION : ", value);
     try {
         await postApi('admin/car', {
             ...value
@@ -39,3 +39,15 @@ export const requestListCarById = ({ id = null }) => async (dispatch) => {
     }
 }
 
+
+export const requestDeleteListCar = ({ id }) => async dispatch => {
+    try {
+        await deleteApi(`admin/car/${id}`)
+        dispatch({
+            type: "DELETE_SUCCESS"
+        })
+    }
+    catch (error) {
+        console.log(error.message);
+    }
+}

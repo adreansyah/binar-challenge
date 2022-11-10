@@ -32,7 +32,27 @@ export const postApi = ((endpoint, params) => {
     }, {
         headers: {
             access_token: `${TOKEN}`,
-            "Content-Type": "multipart/form-data" 
+            "Content-Type": "multipart/form-data"
+        }
+    })
+})
+
+export const putApi = ((endpoint, params) => {
+    return axios.put(url + endpoint, {
+        ...params
+    }, {
+        headers: {
+            access_token: `${TOKEN}`,
+            "Content-Type": "multipart/form-data"
+        }
+    })
+})
+
+export const deleteApi = ((endpoint, params) => {
+    return axios.delete(url + endpoint, {
+        headers: {
+            access_token: `${TOKEN}`,
+            "Content-Type": "multipart/form-data"
         }
     })
 })

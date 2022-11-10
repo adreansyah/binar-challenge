@@ -1,4 +1,4 @@
-import { requestCreateCar, requestListCar, requestListCarById } from 'ex-redux/actions/action-create-car';
+import { requestPOST } from 'ex-redux/actions/lessonAction';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
@@ -20,17 +20,8 @@ const Forms = () => {
 
     const handleSubmit = (_) => {
         _.preventDefault()
-        // console.log("object");
-        dispatch(requestCreateCar({ value: forms }))
+        dispatch(requestPOST({ value: forms }))
     }
-
-    useEffect(() => {
-        dispatch(requestListCar())
-    }, [dispatch])
-
-    useEffect(() => {
-        id && dispatch(requestListCarById({ id }))
-    }, [id])
 
     useEffect(() => {
         setTimeout(() => {
@@ -52,7 +43,7 @@ const Forms = () => {
         reader.readAsDataURL(file);
     }
     return (
-        <div style={{ width: "50%", padding: 20 }}>
+        <div >
             <form onSubmit={handleSubmit}>
                 <div style={{ paddingTop: 4, paddingBottom: 4 }}>
                     <FormGroup>
@@ -106,8 +97,10 @@ const Forms = () => {
                         </div>
                     }
                 </div>
-                <div style={{ paddingTop: 4, paddingBottom: 4 }}>
-                    <Button type='submit'>Submit</Button>
+                <div style={{ padding: 20, display: "flex", justifyContent: "end" }}>
+                    <Button color="primary">
+                        Save
+                    </Button>
                 </div>
             </form >
         </div >

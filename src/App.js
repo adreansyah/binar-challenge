@@ -2,13 +2,18 @@ import Card from 'component/card';
 import { requestApiGET } from 'ex-redux/actions/lessonAction';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { Input } from 'reactstrap';
+import { Button, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { category, price, status } from './page/rent-resources/option-data';
+import ModalBody from 'component/modal';
+import ModalDialog from 'component/modal';
+import Forms from 'page/create-form';
 
 const App = (props) => {
     const dispatch = useDispatch()
     const state = useSelector(state => state);
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
     const [forms, setforms] = useState({
         name: "",
         category: "",
@@ -40,6 +45,9 @@ const App = (props) => {
     }
     return (
         <div>
+            <Button color="success" onClick={toggle}>
+                CREATE CAR
+            </Button>
             <div className='block-box-search' style={{ top: "1rem" }}>
                 <div className='box-card-search'>
                     <form >
@@ -95,6 +103,11 @@ const App = (props) => {
             </div>
             {state.dataList.loading ? <span style={{ position: "relative", top: "20rem", left: "50%" }}>LOADING...</span> :
                 <Card data={state.dataList.data} {...props} />}
+            <ModalDialog
+                modal={modal}
+                toggle={toggle}
+                component={<Forms />}
+            />
         </div>
     )
 }

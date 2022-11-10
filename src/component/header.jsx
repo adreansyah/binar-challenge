@@ -32,11 +32,11 @@ export const Header = ({ name, history, statusPencarian }) => {
                         <i className="bi bi-list icon-bar-style"></i>
                     </span>
                 </div>
-                <div id="myModal" className="modal">
+                {/* <div id="myModal" className="modal">
                     <div className="modal-content">
                         <span className="close">&times;</span>
                     </div>
-                </div>
+                </div> */}
             </nav>
             <div className="hero-section" style={{ height: statusPencarian === "success" ? 200 : "auto" }}>
                 {statusPencarian !== "success" && <div className="hero-section-left">

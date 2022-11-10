@@ -8,6 +8,7 @@ import { category, price, status } from './page/rent-resources/option-data';
 import ModalBody from 'component/modal';
 import ModalDialog from 'component/modal';
 import Forms from 'page/create-form';
+import SvgComponent from 'component/Loader';
 
 const App = (props) => {
     const dispatch = useDispatch()
@@ -101,7 +102,9 @@ const App = (props) => {
                     </form>
                 </div>
             </div>
-            {state.dataList.loading ? <span style={{ position: "relative", top: "20rem", left: "50%" }}>LOADING...</span> :
+            {state.dataList.loading ?
+                <span style={{ position: "relative", top: "5rem" }}><SvgComponent /></span>
+                :
                 <Card data={state.dataList.data} {...props} />}
             <ModalDialog
                 modal={modal}

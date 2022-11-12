@@ -26,7 +26,6 @@ export const fetchApi = ((endpoint, params) => {
 })
 
 export const postApi = ((endpoint, params) => {
-    console.log(params);
     return axios.post(url + endpoint, {
         ...params
     }, {

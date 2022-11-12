@@ -1,15 +1,17 @@
-import { requestPOST } from 'ex-redux/actions/lessonAction';
+import { requestApiGETById, requestPOST, requestPUT } from 'ex-redux/actions/lessonAction';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { Button, FormGroup, Input, Label } from 'reactstrap';
 
 const Forms = () => {
     const dispatch = useDispatch()
-    const { formState } = useSelector(state => state.userData)
+    const { formState } = useSelector(state => state.dataList)
+    const navigate = useNavigate()
     const [forms, setforms] = useState(formState)
     const { id } = useParams()
     const [image, setImage] = useState(null)
+    const [updateImg, setUpdateImg] = useState(false)
     const handleChange = (_) => {
         const { value, name } = _.target
         setforms(prev => ({
@@ -17,19 +19,15 @@ const Forms = () => {
             [name]: value,
         }))
     }
-
-    const handleSubmit = (_) => {
-        _.preventDefault()
-        dispatch(requestPOST({ value: forms }))
-    }
-
+    useEffect(() => {
+        id && dispatch(requestApiGETById({ id }))
+    }, [id])
     useEffect(() => {
         setTimeout(() => {
-            console.log(formState);
             setforms(formState)
+            id && setImage(formState.image)
         }, 1000)
-    }, [formState])
-
+    }, [formState, id])
     const fileUpload = (_) => {
         var file = _.target.files[0];
         var reader = new FileReader();
@@ -39,11 +37,23 @@ const Forms = () => {
                 ...prev,
                 image: file
             }))
+            id && setUpdateImg(true)
         }
         reader.readAsDataURL(file);
     }
+    const handleSubmit = (_) => {
+        _.preventDefault()
+        if (id) {
+            if (!updateImg) {
+                delete forms.image
+            }
+            dispatch(requestPUT({ id, value: forms, navigate }))
+        } else {
+            dispatch(requestPOST({ value: forms, navigate }))
+        }
+    }
     return (
-        <div >
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}>
             <form onSubmit={handleSubmit}>
                 <div style={{ paddingTop: 4, paddingBottom: 4 }}>
                     <FormGroup>
@@ -82,9 +92,9 @@ const Forms = () => {
                     <FormGroup switch>
                         <Input name='status' onChange={() => setforms(prev => ({
                             ...prev,
-                            status: !forms.status
-                        }))} type="switch" role="switch" value={forms.status} />
-                        <Label check>{forms.status ? "available" : "unavailable"}</Label>
+                            isRented: !forms.isRented
+                        }))} type="switch" role="switch" checked={forms.isRented} />
+                        <Label check>{forms.isRented ? "available" : "unavailable"}</Label>
                     </FormGroup>
                 </div>
                 <div style={{ display: "flex", paddingTop: 4, paddingBottom: 4 }}>

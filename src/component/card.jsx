@@ -1,11 +1,13 @@
-import { requestDeleteListCar, requestListCarById } from 'ex-redux/actions/action-create-car';
+import { requestDELETE } from 'ex-redux/actions/lessonAction';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Button } from 'reactstrap';
+import { useNavigate } from 'react-router';
+import { Button, ButtonGroup } from 'reactstrap';
 
 
 const Card = ({ data, history }) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const formatNumeric = (number) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
     return (
         <div className='box-card'>
@@ -19,7 +21,10 @@ const Card = ({ data, history }) => {
                             <p className='desc-car'>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             </p>
-                            <Button type='button' onClick={() => dispatch(requestDeleteListCar({ id: item.id }))}>DELETE</Button>
+                            <ButtonGroup style={{ gap: "1rem", width: "100%" }}>
+                                <Button color='success' type='button' onClick={() => navigate(`/create-form/${item.id}`)}>Update</Button>
+                                <Button color='danger' type='button' onClick={() => dispatch(requestDELETE({ id: item.id }))}>DELETE</Button>
+                            </ButtonGroup>
                         </div>
                     )
                 })

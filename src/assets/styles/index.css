@@ -1,7 +1,6 @@
 /* ===== CSS Header ===== */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
-
 html {
   scroll-behavior: smooth;
 }
@@ -18,16 +17,16 @@ body {
 .header {
   display: flex;
   flex-direction: column;
-  background-color: #f1f3ff
+  background-color: #f1f3ff;
 }
 
 .navbar-binar {
   display: flex;
   justify-content: space-around;
-  padding: 16px
+  padding: 16px;
 }
 
-.navbar-binar>img {
+.navbar-binar > img {
   height: 80px;
   margin: 0;
   padding: 16px 20px 17px 16px;
@@ -44,7 +43,8 @@ body {
   display: none;
 }
 
-ul>li, a {
+ul > li,
+a {
   font-family: arial;
   font-size: 14px;
   font-weight: 400;
@@ -53,7 +53,8 @@ ul>li, a {
   text-decoration: none;
 }
 
-.nav-parent, a:hover {
+.nav-parent,
+a:hover {
   color: #0d28a6;
   font-family: arial;
   font-size: 14px;
@@ -103,7 +104,7 @@ a:active {
   margin-top: 0px;
 }
 
-.hero-section-left>button {
+.hero-section-left > button {
   display: inline;
   width: 140px;
   height: 36px;
@@ -120,7 +121,7 @@ a:active {
   padding: 23px;
 }
 
-.cta-banner>button {
+.cta-banner > button {
   background-image: url("../images/button_mulai_sewa.png");
   width: 140px;
   height: 36px;
@@ -131,11 +132,12 @@ a:active {
   margin-top: 20px;
 }
 
-.cta-title, h2 {
+.cta-title,
+h2 {
   font-size: 2rem;
 }
 
-.cta-desc>p {
+.cta-desc > p {
   width: 26rem;
   display: inline-flex;
 }
@@ -168,7 +170,7 @@ a:active {
   gap: 86px;
 }
 
-.section-first-img>img {
+.section-first-img > img {
   object-fit: cover;
   width: 100%;
   max-height: 100%;
@@ -283,7 +285,7 @@ a:active {
   overflow: hidden;
 }
 
-.testimonial-title>p {
+.testimonial-title > p {
   font-family: Arial;
   font-size: 24px;
   font-weight: bold;
@@ -291,7 +293,7 @@ a:active {
   text-align: center;
 }
 
-.testimonial-desc>p {
+.testimonial-desc > p {
   font-family: Arial;
   font-size: 14px;
   font-weight: bold;
@@ -348,7 +350,7 @@ a:active {
   margin: 20px auto;
 }
 
-.testimonial-arrow>button {
+.testimonial-arrow > button {
   cursor: pointer;
   margin: auto 10px;
   display: inline-grid;
@@ -379,12 +381,12 @@ a:active {
   display: grid;
   grid-template-columns: 1fr 35rem;
   margin: 0 auto;
-  font-family: 'Arial';
+  font-family: "Arial";
   gap: 6rem;
 }
 
-.faq-title>h1 {
-  margin: 0
+.faq-title > h1 {
+  margin: 0;
 }
 
 .list-faq {
@@ -403,7 +405,7 @@ a:active {
 
 .faq-item {
   border-radius: 4px;
-  border: 1px solid #D4D4D4;
+  border: 1px solid #d4d4d4;
   padding-left: 24px;
   padding-right: 24px;
   height: auto;
@@ -412,7 +414,7 @@ a:active {
   justify-content: space-between;
 }
 
-.faq-item>h3 {
+.faq-item > h3 {
   font-size: 14px;
 }
 
@@ -431,7 +433,7 @@ footer {
   margin-top: 8rem;
   display: flex;
   justify-content: center;
-  margin-bottom: 5rem
+  margin-bottom: 5rem;
 }
 
 .footer-wrapper {
@@ -507,15 +509,13 @@ footer {
   max-width: 70%;
 }
 
-
-
 @media only screen and (max-width: 600px) {
   .navbar {
     display: flex;
     justify-content: space-between;
   }
 
-  .navbar>img {
+  .navbar > img {
     margin: 0;
     height: 35px;
     padding: 16px 20px 17px 16px;
@@ -541,7 +541,7 @@ footer {
         padding-left: 16px;
     } */
 
-  .hero-car>img {
+  .hero-car > img {
     object-fit: cover;
     width: 100%;
     max-height: 100%;
@@ -558,7 +558,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     padding: 16px;
-    margin: 0
+    margin: 0;
   }
 
   .section-first {
@@ -583,7 +583,7 @@ footer {
     padding: 0px 48px 0px 48px;
   }
 
-  .section-first-img>img {
+  .section-first-img > img {
     object-fit: cover;
     width: 100%;
     max-height: 100%;
@@ -682,7 +682,7 @@ footer {
     position: relative;
     justify-content: right;
     margin: 0;
-    left: 0
+    left: 0;
   }
 
   .testimonial_block_center {
@@ -706,11 +706,12 @@ footer {
     text-align: center;
   }
 
-  .cta-title, h2 {
+  .cta-title,
+  h2 {
     font-size: 2rem;
   }
 
-  .cta-desc>p {
+  .cta-desc > p {
     width: 100%;
     display: inline-flex;
   }
@@ -738,11 +739,11 @@ footer {
     padding: 16px;
     grid-template-columns: none;
     margin: 0 auto;
-    font-family: 'Arial';
+    font-family: "Arial";
     gap: 11px;
   }
 
-  .faq-title>h1 {
+  .faq-title > h1 {
     font-size: 24px;
     line-height: 36px;
     margin: 0;
@@ -787,7 +788,7 @@ footer {
 }
 
 .box-card-search {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 10px rgb(0 0 0 / 15%);
   border-radius: 8px;
   padding: 20px;
@@ -802,7 +803,7 @@ footer {
 }
 
 .btn-default {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   border: none;
   width: 100%;
   color: white;
@@ -816,7 +817,8 @@ footer {
   top: 1.6rem;
 }
 
-input[type=text], select {
+input[type="text"],
+select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -826,9 +828,9 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type="submit"] {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -837,7 +839,7 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type="submit"]:hover {
   background-color: #45a049;
 }
 
@@ -891,7 +893,7 @@ input[type=submit]:hover {
 
 .box-card {
   max-width: 86rem;
-  background: #FFFFFF;
+  background: #ffffff;
   width: 100%;
   margin: 2rem;
   display: grid;
@@ -905,20 +907,20 @@ input[type=submit]:hover {
   align-items: flex-start;
   padding: 24px;
   gap: 12px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 4px rgb(0 0 0 / 15%);
   border-radius: 8px;
   flex: none;
   flex-grow: 1;
 }
 
-.card-list>img {
+.card-list > img {
   width: 100%;
   height: 100%;
   max-height: 12rem;
 }
 
-.card-list>p {
+.card-list > p {
   padding: 4px;
   margin: 0;
 }
@@ -942,4 +944,15 @@ input[type=submit]:hover {
   font-weight: 700;
   color: #000000;
   line-height: 24px;
+}
+
+.btn-fixed {
+  font-size: 41px;
+  border-radius: 100%;
+  width: 5vw;
+  height: 5vw;
+  position: fixed;
+  z-index: 10;
+  bottom: 50%;
+  right: 0;
 }

@@ -51,3 +51,32 @@ export const requestDeleteListCar = ({ id }) => async dispatch => {
         console.log(error.message);
     }
 }
+
+export const fetchChart = () => async dispatch => {
+    dispatch({
+        type: "LINE_CHART",
+        payload: [{
+            date: new Date(2021, 5, 12).getTime(),
+            value: 50
+        }, {
+            date: new Date(2021, 5, 13).getTime(),
+            value: 53
+        }, {
+            date: new Date(2021, 5, 14).getTime(),
+            value: 56
+        }, {
+            date: new Date(2021, 5, 15).getTime(),
+            value: 52
+        }, {
+            date: new Date(2021, 5, 16).getTime(),
+            value: 48
+        }, {
+            date: new Date(2021, 5, 17).getTime(),
+            value: 47
+        }, {
+            date: new Date(2021, 5, 18).getTime(),
+            value: 59,
+            bullet: true
+        }]
+    })
+}

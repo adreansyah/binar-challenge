@@ -17,7 +17,9 @@ const initialState = {
         isRented: "",
         price: "",
         image: ""
-    }
+    },
+    lineChart: [],
+    barChart: []
 }
 
 export const dataList = (state = initialState, action) => {
@@ -48,6 +50,16 @@ export const dataList = (state = initialState, action) => {
                     price: action.payload.price,
                     image: action.payload.image
                 }
+            }
+        case "LINE_CHART":
+            return {
+                ...state,
+                lineChart: action.payload
+            }
+        case "BAR_CHART":
+            return {
+                ...state,
+                barChart: action.payload
             }
         default:
             return {
